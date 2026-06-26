@@ -17,12 +17,13 @@ function convertToObject(sourceString) {
     if (trimmed) result.push(trimmed);
   }
 
-  formatted.forEach((line) => {
+  result.forEach((line) => {
     const [key, value] = line.split(':');
+    if (!key || !value) return;
+
     stylesObject[key.trim()] = value.trim();
   });
 
   return stylesObject;
 }
-
 module.exports = convertToObject;
